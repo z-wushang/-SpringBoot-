@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>考生端 H5 · 奶油黄版</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;700;900&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg-1:#F8F1DE; --bg-2:#FBF6E9;
+    --card:#FFFDF6;
+    --ink:#4A3826; --ink-2:#7A6647; --ink-3:#A89272;
+    --line:#EADFC2;
+    --green:#4E6E94; --green-deep:#3A5578;
+    --orange:#C97B4A; --orange-deep:#A85E32;
+    --serif:"Noto Serif SC","Songti SC",serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    font-family:"Inter","PingFang SC",sans-serif;color:var(--ink);width:375px;
+    background:
+      radial-gradient(300px 200px at 90% 5%, rgba(201,123,74,.25), transparent 60%),
+      linear-gradient(180deg, var(--bg-1), var(--bg-2));
+    min-height:812px;
+  }
+  .statusbar{display:flex;justify-content:space-between;padding:14px 18px 6px;font-size:13px;color:var(--ink-2);}
+  .hero{padding:14px 18px 22px;}
+  .hello{font-size:13px;color:var(--ink-2);}
+  .hero h1{font-family:var(--serif);font-size:26px;font-weight:900;margin-top:6px;line-height:1.4;}
+  .hero h1 em{font-style:normal;color:var(--orange-deep);}
+  .count-row{display:flex;align-items:baseline;gap:10px;margin-top:14px;}
+  .count-num{font-family:var(--serif);font-size:52px;font-weight:900;line-height:1;}
+  .count-unit{font-size:13px;color:var(--ink-2);line-height:1.5;}
+  .pill{display:inline-block;margin-top:10px;padding:4px 12px;border-radius:20px;font-size:11px;background:rgba(255,255,255,.6);border:1px solid var(--line);color:var(--ink-2);}
+  .content{padding:0 14px 90px;}
+  .card{
+    background:var(--card);border-radius:20px;padding:18px;margin-bottom:14px;
+    border:1px solid rgba(234,223,194,.6);
+    box-shadow:0 6px 18px rgba(74,56,38,.06);
+  }
+  .card-label{font-size:11px;letter-spacing:1.5px;color:var(--ink-3);margin-bottom:14px;display:flex;justify-content:space-between;}
+  .task{display:flex;align-items:center;gap:10px;padding:11px 0;border-bottom:1px dashed var(--line);font-size:14px;}
+  .task:last-of-type{border-bottom:none;}
+  .checkbox{width:20px;height:20px;border:1.5px solid var(--line);border-radius:50%;flex-shrink:0;background:#fff;}
+  .checkbox.done{background:var(--green);border-color:var(--green);position:relative;}
+  .checkbox.done::after{content:"✓";color:#FFF8E7;position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:12px;}
+  .task .sub{margin-left:auto;font-size:11px;color:var(--ink-3);}
+  .task.done .t{text-decoration:line-through;color:var(--ink-3);}
+  .checkin-btn{
+    margin-top:14px;background:linear-gradient(135deg,#C97B4A,#A85E32);color:#FFF8E7;
+    border-radius:28px;text-align:center;padding:14px;font-size:15px;font-weight:600;
+    box-shadow:0 8px 20px rgba(168,94,50,.35);letter-spacing:1px;
+  }
+  .ring-row{display:flex;align-items:center;gap:14px;}
+  .ring{transform:rotate(-90deg);}
+  .ring-bg{fill:none;stroke:#EFE6D0;stroke-width:7;}
+  .ring-fg{fill:none;stroke:var(--green);stroke-width:7;stroke-linecap:round;stroke-dasharray:180;stroke-dashoffset:60;}
+  .ring-info .n{font-family:var(--serif);font-size:24px;font-weight:700;color:var(--green-deep);}
+  .ring-info .t{font-size:12px;color:var(--ink-2);margin-top:3px;}
+  .heatmap{display:grid;grid-template-columns:repeat(7,1fr);gap:5px;margin-top:14px;}
+  .heatmap div{aspect-ratio:1;border-radius:6px;background:#EFE6D0;}
+  .heatmap div.h1{background:#D3DEEA;}
+  .heatmap div.h2{background:#9DB4CC;}
+  .heatmap div.h3{background:var(--green);}
+  .tabbar{
+    position:fixed;bottom:14px;left:14px;right:14px;width:auto;
+    background:rgba(255,253,246,.92);backdrop-filter:blur(10px);
+    border:1px solid var(--line);border-radius:24px;
+    display:flex;justify-content:space-around;padding:10px 0;
+    box-shadow:0 8px 24px rgba(74,56,38,.12);
+  }
+  .tab{font-size:11px;color:var(--ink-3);text-align:center;}
+  .tab .ico{font-size:18px;display:block;margin-bottom:2px;}
+  .tab.active{color:var(--green-deep);font-weight:600;}</style>
+</head>
+<body>
+  <div class="statusbar"><span>9:41</span><span>📶 🔋 100%</span></div>
+  <div class="hero">
+    <div class="hello">早上好，欣宇 👋</div>
+    <h1>砚边磨剑，<br>来日<em>方长</em>。</h1>
+    <div class="count-row">
+      <div class="count-num">128</div>
+      <div class="count-unit">天后初试<br>福州大学 · 软件工程</div>
+    </div>
+    <span class="pill">今日已完成 2 / 3 任务</span>
+  </div>
+
+  <div class="content">
+    <div class="card">
+      <div class="card-label"><span>TODAY · 今日待办</span><span style="color:var(--ink-3);">全部 ›</span></div>
+      <div class="task done"><div class="checkbox done"></div><span class="t">英语阅读 2 篇</span><span class="sub">120m</span></div>
+      <div class="task"><div class="checkbox"></div><span>政治选择题 50 道</span><span class="sub">60m</span></div>
+      <div class="task"><div class="checkbox"></div><span>高数第三章刷题</span><span class="sub">90m</span></div>
+      <div class="checkin-btn">✦ 完成今日打卡</div>
+    </div>
+
+    <div class="card">
+      <div class="card-label"><span>PROGRESS · 今日进度</span><span>66%</span></div>
+      <div class="ring-row">
+        <svg class="ring" width="80" height="80" viewBox="0 0 80 80">
+          <circle class="ring-bg" cx="40" cy="40" r="32"/>
+          <circle class="ring-fg" cx="40" cy="40" r="32"/>
+        </svg>
+        <div class="ring-info">
+          <div class="n">66%</div>
+          <div class="t">今日目标完成度<br>🔥 连续打卡 7 天</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-label"><span>HEATMAP · 打卡热力</span><span>近两周</span></div>
+      <div class="heatmap">
+        <div class=""></div><div class="h1"></div><div class="h2"></div><div class="h3"></div><div class="h2"></div><div class="h1"></div><div class="h2"></div>
+        <div class="h1"></div><div class="h2"></div><div class="h3"></div><div class="h3"></div><div class="h2"></div><div class="h1"></div><div class="h3"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tabbar">
+    <div class="tab active"><span class="ico">⌂</span>首页</div>
+    <div class="tab"><span class="ico">✓</span>打卡</div>
+    <div class="tab"><span class="ico">◔</span>数据</div>
+    <div class="tab"><span class="ico">☺</span>我的</div>
+  </div>
+</body>
+</html>

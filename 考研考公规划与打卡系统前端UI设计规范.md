@@ -4,10 +4,12 @@
 
 | 项目名称 | 基于 SpringBoot 的考研考公规划与打卡系统 |
 | --- | --- |
-| 文档版本 | V1.0 |
+| 文档版本 | V1.1 |
 | 编写日期 | 2026-10-23 |
 | 编写人 | 郑欣宇 |
 | 适用端 | 考生端 Web / 考生端 H5 / 督学端 Web / 管理后台 Web |
+
+> V1.1 修订：配色方案由"松柏绿主色"调整为最终落地的"奶油米黄 + 雾蓝 #4E6E94 + 赭石橙 #C97B4A"书卷气方案，新增衬线字体族。
 
 ---
 
@@ -42,78 +44,87 @@
 
 ## 3 颜色系统
 
-### 3.1 主色与语义色
+### 3.1 设计基调
 
-学习类产品取"松柏绿"作为主色，沉稳护眼；"活力橙"作为打卡 / 连续天数的激励色。
+整体采用**奶油米黄书卷气**配色：暖米黄页面底 + 暖棕墨字 + 雾蓝主色 + 赭石橙行动色，气质参考旧书与黄铜书签，克制、沉静、有学院感，适合长时间学习场景。
 
-| Token | 色值 | 用途 |
-| --- | --- | --- |
-| `--color-primary` | `#2F6F5E` | 主按钮、选中态、导航高亮、Logo |
-| `--color-primary-hover` | `#3A8572` | 主按钮 hover |
-| `--color-primary-active` | `#245849` | 主按钮按下 |
-| `--color-primary-light` | `#E6F2EF` | 浅底背景、标签底色 |
-| `--color-accent` | `#FF7A45` | 打卡按钮、连续天数、倒计时强调、热力图高值 |
-| `--color-accent-light` | `#FFEDE3` | 激励类标签底 |
-| `--color-success` | `#52C41A` | 打卡成功、已完成 |
-| `--color-warning` | `#FAAD14` | 临近考试提醒、待办过期 |
-| `--color-danger` | `#F5222D` | 错误、禁用确认、断卡警告 |
-| `--color-info` | `#8C8C8C` | 辅助信息 |
-
-### 3.2 中性色阶
+### 3.2 主色与语义色
 
 | Token | 色值 | 用途 |
 | --- | --- | --- |
-| `--text-primary` | `#1F2937` | 标题、正文 |
-| `--text-regular` | `#4B5563` | 常规正文 |
-| `--text-secondary` | `#6B7280` | 辅助说明 |
-| `--text-placeholder` | `#9CA3AF` | 占位符、禁用 |
-| `--border` | `#E5E7EB` | 边框、分割线 |
-| `--border-light` | `#F0F0F0` | 浅分隔 |
-| `--bg-page` | `#F7F8FA` | 页面底色 |
-| `--bg-card` | `#FFFFFF` | 卡片、浮层 |
-| `--bg-mask` | `rgba(0,0,0,0.45)` | 遮罩 |
+| `--color-primary` | `#4E6E94` | 雾蓝：主按钮、选中态、导航高亮、Logo、图表主色 |
+| `--color-primary-hover` | `#5F7FA6` | 主按钮 hover |
+| `--color-primary-active` | `#3A5578` | 主按钮按下 / 深强调 |
+| `--color-primary-light` | `#E0E7F0` | 浅底背景、标签底色 |
+| `--color-accent` | `#C97B4A` | 赭石橙：打卡按钮、连续天数、倒计时强调、热力图高值 |
+| `--color-accent-deep` | `#A85E32` | 行动按钮渐变深端、连续天数数字 |
+| `--color-accent-light` | `#F0E2D2` | 激励类标签底 |
+| `--color-success` | `#4E6E94` | 打卡成功（复用主色，避免颜色过多） |
+| `--color-warning` | `#C99B4A` | 临近考试提醒、待办过期 |
+| `--color-danger` | `#B5533C` | 错误、禁用确认、断卡警告 |
+| `--color-info` | `#A89272` | 辅助信息 |
 
-### 3.3 三端主题色差异
+### 3.3 中性色阶（暖棕系）
 
-共用主色，通过顶栏 / 侧边栏 tint 区分端身份，避免三套配色：
+| Token | 色值 | 用途 |
+| --- | --- | --- |
+| `--text-primary` | `#4A3826` | 标题、正文（暖棕墨色，不用纯黑） |
+| `--text-regular` | `#7A6647` | 常规正文 |
+| `--text-secondary` | `#A89272` | 辅助说明 |
+| `--text-placeholder` | `#C4B49A` | 占位符、禁用 |
+| `--border` | `#EADFC2` | 边框、分割线 |
+| `--border-light` | `#F3EAD2` | 浅分隔（虚线用） |
+| `--bg-page-1` | `#F8F1DE` | 页面底色（上） |
+| `--bg-page-2` | `#FBF6E9` | 页面底色（下，渐变） |
+| `--bg-card` | `#FFFDF6` | 卡片、浮层（暖白） |
+| `--bg-mask` | `rgba(74,56,38,0.35)` | 遮罩 |
+
+### 3.4 三端主题色差异
+
+共用奶油黄基调与雾蓝主色，通过顶栏 / 侧边栏 tint 区分端身份，避免三套配色：
 
 | 端 | 主题强调色 | 视觉气质 |
 | --- | --- | --- |
-| 考生端 Web/H5 | `#2F6F5E` 松柏绿 | 成长、沉静 |
-| 督学端 | `#FF7A45` 活力橙（顶栏/选中态） | 关怀、行动 |
-| 管理后台 | `#1D3557` 深海蓝（侧边栏） | 专业、克制 |
+| 考生端 Web/H5 | `#4E6E94` 雾蓝 + `#C97B4A` 赭石橙按钮 | 沉静、书卷气 |
+| 督学端 | `#C97B4A` 赭石橙（顶栏/选中态） | 关怀、行动 |
+| 管理后台 | `#3A5578` 深雾蓝（侧边栏） | 专业、克制 |
 
-### 3.4 CSS 变量示例（:root）
+### 3.5 CSS 变量示例（:root）
 
 ```css
 :root {
-  --color-primary: #2F6F5E;
-  --color-primary-hover: #3A8572;
-  --color-primary-active: #245849;
-  --color-primary-light: #E6F2EF;
-  --color-accent: #FF7A45;
-  --color-accent-light: #FFEDE3;
-  --color-success: #52C41A;
-  --color-warning: #FAAD14;
-  --color-danger: #F5222D;
-  --color-info: #8C8C8C;
-  --text-primary: #1F2937;
-  --text-regular: #4B5563;
-  --text-secondary: #6B7280;
-  --text-placeholder: #9CA3AF;
-  --border: #E5E7EB;
-  --border-light: #F0F0F0;
-  --bg-page: #F7F8FA;
-  --bg-card: #FFFFFF;
-  --radius-sm: 6px;
-  --radius-md: 10px;
-  --radius-lg: 16px;
-  --shadow-card: 0 2px 8px rgba(31, 41, 55, 0.06);
-  --shadow-pop: 0 8px 24px rgba(31, 41, 55, 0.12);
+  --color-primary: #4E6E94;
+  --color-primary-hover: #5F7FA6;
+  --color-primary-active: #3A5578;
+  --color-primary-light: #E0E7F0;
+  --color-accent: #C97B4A;
+  --color-accent-deep: #A85E32;
+  --color-accent-light: #F0E2D2;
+  --color-warning: #C99B4A;
+  --color-danger: #B5533C;
+  --color-info: #A89272;
+
+  --text-primary: #4A3826;
+  --text-regular: #7A6647;
+  --text-secondary: #A89272;
+  --text-placeholder: #C4B49A;
+  --border: #EADFC2;
+  --border-light: #F3EAD2;
+  --bg-page-1: #F8F1DE;
+  --bg-page-2: #FBF6E9;
+  --bg-card: #FFFDF6;
+
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --shadow-card: 0 6px 18px rgba(74, 56, 38, 0.06);
+  --shadow-pop: 0 8px 24px rgba(74, 56, 38, 0.12);
 }
 ```
 
-### 3.5 暗色模式（预留）
+页面背景叠加两层柔和径向光晕（右上角淡橙、左上角淡蓝），增加层次但不抢戏。
+
+### 3.6 暗色模式（预留）
 
 在 `@media (prefers-color-scheme: dark)` 下覆盖同名变量即可，本期不实现，仅预留 token 命名一致。
 
@@ -125,8 +136,13 @@
 
 ```css
 --font-sans: "PingFang SC", "Microsoft YaHei", "Helvetica Neue", Inter, system-ui, sans-serif;
---font-mono: "JetBrains Mono", "SF Mono", Consolas, monospace;
+--font-serif: "Noto Serif SC", "Songti SC", "SimSun", serif;
+--font-mono: "Inter", "JetBrains Mono", Consolas, monospace;
 ```
+
+- 页面大标题、倒计时大数字、统计数字统一使用**衬线字体 `--font-serif`**（Noto Serif SC），营造书卷气；
+- 正文、控件、表格用无衬线 `--font-sans`；
+- 数字统计用 `--font-mono`，避免跳动。
 
 ### 4.2 字号层级
 
