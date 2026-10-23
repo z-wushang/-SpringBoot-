@@ -1,0 +1,25 @@
+target/
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+### VS Code ###
+.vscode/
+
+### Windows ###
+Thumbs.db
+desktop.ini
+
+### Logs ###
+*.log
+logs/
+
+### Uploads ###
+upload/
+data/
