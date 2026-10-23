@@ -1,0 +1,30 @@
+:root {
+  --color-primary: #557A9A;
+  --color-primary-hover: #6B8FB0;
+  --color-primary-active: #3D5C7A;
+  --color-primary-light: #DCE4EC;
+  --color-accent: #C97B4A;
+  --color-accent-deep: #A85E32;
+  --color-accent-light: #F0E2D2;
+  --color-warning: #C99B4A;
+  --color-danger: #B5533C;
+  --color-info: #A89272;
+
+  --text-primary: #4A3826;
+  --text-regular: #7A6647;
+  --text-secondary: #A89272;
+  --text-placeholder: #C4B49A;
+  --border: #EADFC2;
+  --border-light: #F3EAD2;
+  --bg-page-1: #F8F1DE;
+  --bg-page-2: #FBF6E9;
+  --bg-card: #FFFDF6;
+
+  --font-serif: "Noto Serif SC", "Songti SC", "SimSun", serif;
+
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --shadow-card: 0 6px 18px rgba(74, 56, 38, 0.06);
+  --shadow-pop: 0 8px 24px rgba(74, 56, 38, 0.12);
+}

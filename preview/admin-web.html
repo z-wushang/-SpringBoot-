@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<title>考公打卡 · 管理后台</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:"PingFang SC","Microsoft YaHei",sans-serif;color:#4A3826;min-height:100vh;background:#F8F1DE;display:flex;}
+  .side{width:220px;background:#3D5C7A;color:#E8EEF5;padding:24px 0;flex-shrink:0;}
+  .side .logo{display:flex;align-items:center;gap:10px;padding:0 24px 24px;font-family:"Noto Serif SC",serif;font-weight:700;font-size:17px;color:#FFF8E7;border-bottom:1px solid rgba(255,255,255,.1);}
+  .side .logo-mark{width:32px;height:32px;border-radius:50%;background:#C97B4A;color:#FFF8E7;display:flex;align-items:center;justify-content:center;font-weight:700;}
+  .side nav{margin-top:16px;}
+  .side nav a{display:block;padding:11px 24px;color:#C9D6E3;text-decoration:none;font-size:14px;border-left:3px solid transparent;}
+  .side nav a.active{background:rgba(255,255,255,.08);color:#fff;border-left-color:#C97B4A;}
+  .side nav a:hover{background:rgba(255,255,255,.05);}
+  .main{flex:1;padding:28px 36px;}
+  .head{display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;}
+  .head h1{font-family:"Noto Serif SC",serif;font-size:24px;}
+  .head .avatar{width:38px;height:38px;border-radius:50%;background:#fff;border:1.5px solid #EADFC2;display:flex;align-items:center;justify-content:center;font-weight:600;color:#3D5C7A;}
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:22px;}
+  .stat{background:#FFFDF6;border:1px solid rgba(234,223,194,.6);border-radius:16px;padding:20px;box-shadow:0 6px 18px rgba(74,56,38,.06);}
+  .stat .n{font-family:"Noto Serif SC",serif;font-size:30px;font-weight:900;color:#3D5C7A;}
+  .stat .n.orange{color:#C97B4A;}
+  .stat .l{color:#A89272;font-size:13px;margin-top:6px;}
+  .card{background:#FFFDF6;border:1px solid rgba(234,223,194,.6);border-radius:16px;padding:22px;box-shadow:0 6px 18px rgba(74,56,38,.06);}
+  .card h3{font-family:"Noto Serif SC",serif;font-size:16px;margin-bottom:14px;}
+  table{width:100%;border-collapse:collapse;font-size:13px;}
+  th{text-align:left;color:#A89272;font-weight:400;padding:10px 8px;border-bottom:1px solid #F3EAD2;}
+  td{padding:11px 8px;border-bottom:1px dashed #F3EAD2;}
+  .pill{padding:3px 10px;border-radius:14px;font-size:11px;}
+  .pill.wait{background:#F0E2D2;color:#A85E32;}
+  .pill.ok{background:#DCE4EC;color:#3D5C7A;}
+  .pill.off{background:#F3E8C8;color:#A89272;}
+</style>
+</head>
+<body>
+  <aside class="side">
+    <div class="logo"><div class="logo-mark">公</div>考公打卡 · 后台</div>
+    <nav>
+      <a class="active" href="#">仪表盘</a>
+      <a href="#">用户管理</a>
+      <a href="#">资料审核</a>
+      <a href="#">帖子审核</a>
+      <a href="#">求助工单</a>
+      <a href="#">数据统计</a>
+      <a href="#">系统设置</a>
+    </nav>
+  </aside>
+
+  <main class="main">
+    <div class="head">
+      <h1>仪表盘</h1>
+      <div class="avatar">郑</div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="n">1,286</div><div class="l">注册用户总数</div></div>
+      <div class="stat"><div class="n">+38</div><div class="l">今日新增用户</div></div>
+      <div class="stat"><div class="n orange">6</div><div class="l">待审资料</div></div>
+      <div class="stat"><div class="n orange">3</div><div class="l">待审帖子</div></div>
+    </div>
+
+    <div class="card">
+      <h3>最近注册用户</h3>
+      <table>
+        <thead><tr><th>ID</th><th>用户名</th><th>邮箱</th><th>身份</th><th>状态</th><th>注册时间</th></tr></thead>
+        <tbody>
+          <tr><td>1024</td><td>zxy2024</td><td>zxy@fzu.edu.cn</td><td>考生</td><td><span class="pill ok">正常</span></td><td>2026-10-23 09:12</td></tr>
+          <tr><td>1023</td><td>study_li</td><td>li@qq.com</td><td>考生</td><td><span class="pill ok">正常</span></td><td>2026-10-23 08:40</td></tr>
+          <tr><td>1022</td><td>mentor_wang</td><td>wang@fzu.edu.cn</td><td>督学</td><td><span class="pill ok">正常</span></td><td>2026-10-22 21:05</td></tr>
+          <tr><td>1021</td><td>exam_chen</td><td>chen@163.com</td><td>考生</td><td><span class="pill wait">待激活</span></td><td>2026-10-22 18:22</td></tr>
+          <tr><td>1020</td><td>test_zhao</td><td>zhao@test.com</td><td>考生</td><td><span class="pill off">已禁用</span></td><td>2026-10-21 14:00</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </main>
+</body>
+</html>

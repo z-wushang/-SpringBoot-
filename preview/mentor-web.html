@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<title>考公打卡 · 督学端</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    font-family:"PingFang SC","Microsoft YaHei",sans-serif;color:#4A3826;min-height:100vh;
+    background:
+      radial-gradient(900px 500px at 90% -10%, rgba(201,123,74,.18), transparent 60%),
+      radial-gradient(700px 400px at -10% 20%, rgba(85,122,154,.10), transparent 60%),
+      linear-gradient(180deg,#F8F1DE,#FBF6E9);
+  }
+  .topbar{display:flex;align-items:center;padding:18px 40px;background:rgba(255,253,246,.7);backdrop-filter:blur(8px);border-bottom:1px solid #EADFC2;}
+  .logo{display:flex;align-items:center;gap:10px;font-family:"Noto Serif SC","Songti SC",serif;font-weight:700;font-size:19px;}
+  .logo-mark{width:36px;height:36px;border-radius:50%;background:#C97B4A;color:#FFF8E7;display:flex;align-items:center;justify-content:center;font-weight:700;box-shadow:0 4px 12px rgba(201,123,74,.3);}
+  .menu{display:flex;gap:32px;margin-left:60px;font-size:14px;color:#7A6647;}
+  .menu .active{color:#C97B4A;font-weight:600;position:relative;}
+  .menu .active::after{content:"";position:absolute;left:50%;transform:translateX(-50%);bottom:-8px;width:20px;height:2px;background:#C97B4A;border-radius:2px;}
+  .avatar{margin-left:auto;width:38px;height:38px;border-radius:50%;background:#fff;border:1.5px solid #EADFC2;display:flex;align-items:center;justify-content:center;font-weight:600;color:#A85E32;}
+  .wrap{max-width:1200px;margin:24px auto;padding:0 24px 60px;}
+  .hello{font-family:"Noto Serif SC",serif;font-size:28px;font-weight:900;margin-bottom:4px;}
+  .sub{color:#7A6647;font-size:14px;margin-bottom:20px;}
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:20px;}
+  .stat{background:#FFFDF6;border:1px solid rgba(234,223,194,.6);border-radius:20px;padding:20px;box-shadow:0 6px 18px rgba(74,56,38,.06);}
+  .stat .n{font-family:"Noto Serif SC",serif;font-size:32px;font-weight:900;color:#C97B4A;}
+  .stat .l{color:#A89272;font-size:13px;margin-top:6px;}
+  .row{display:grid;grid-template-columns:1.4fr 1fr;gap:20px;}
+  .card{background:#FFFDF6;border:1px solid rgba(234,223,194,.6);border-radius:20px;padding:22px;box-shadow:0 6px 18px rgba(74,56,38,.06);}
+  .card h3{font-family:"Noto Serif SC",serif;font-size:17px;margin-bottom:16px;display:flex;justify-content:space-between;align-items:center;}
+  .card h3 small{font-size:12px;color:#A89272;font-weight:400;font-family:sans-serif;}
+  .item{display:flex;gap:12px;padding:12px 0;border-bottom:1px dashed #F3EAD2;}
+  .item:last-child{border-bottom:none;}
+  .dot{width:36px;height:36px;border-radius:50%;background:#DCE4EC;color:#3D5C7A;display:flex;align-items:center;justify-content:center;font-weight:600;flex-shrink:0;}
+  .item .body{flex:1;}
+  .item .t{font-size:14px;}
+  .item .m{font-size:12px;color:#A89272;margin-top:3px;}
+  .pill{padding:3px 10px;border-radius:16px;font-size:11px;background:#F0E2D2;color:#A85E32;}
+  .pill.blue{background:#DCE4EC;color:#3D5C7A;}
+  .pill.gray{background:#F3E8C8;color:#7A6647;}
+</style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="logo"><div class="logo-mark">公</div>考公打卡 · 督学端</div>
+    <nav class="menu">
+      <span class="active">概览</span>
+      <span>关注考生</span>
+      <span>求助处理</span>
+      <span>消息</span>
+    </nav>
+    <div class="avatar">郑</div>
+  </div>
+
+  <div class="wrap">
+    <div class="hello">督学台，早上好。</div>
+    <div class="sub">今天有 5 位考生完成打卡，2 条求助待你回复。</div>
+
+    <div class="stats">
+      <div class="stat"><div class="n">12</div><div class="l">我关注的考生</div></div>
+      <div class="stat"><div class="n">8</div><div class="l">今日打卡动态</div></div>
+      <div class="stat"><div class="n">2</div><div class="l">待回复求助</div></div>
+      <div class="stat"><div class="n">3</div><div class="l">未读消息</div></div>
+    </div>
+
+    <div class="row">
+      <div class="card">
+        <h3>今日打卡动态 <small>关注的考生实时更新</small></h3>
+        <div class="item"><div class="dot">林</div><div class="body"><div class="t">林同学 完成了「行测言语理解 40 题」</div><div class="m">26 分钟前 · 学习时长 65 min</div></div><span class="pill blue">已打卡</span></div>
+        <div class="item"><div class="dot">陈</div><div class="body"><div class="t">陈同学 完成了「申论概括题 1 道」</div><div class="m">1 小时前 · 学习时长 90 min</div></div><span class="pill blue">已打卡</span></div>
+        <div class="item"><div class="dot">王</div><div class="body"><div class="t">王同学 今日尚未打卡，已连续学习 12 天</div><div class="m">2 小时前 · 可发送提醒</div></div><span class="pill">断卡风险</span></div>
+        <div class="item"><div class="dot">李</div><div class="body"><div class="t">李同学 发起求助：资料分析速度提不上来</div><div class="m">3 小时前 · @了你</div></div><span class="pill">待回复</span></div>
+      </div>
+
+      <div class="card">
+        <h3>待处理求助 <small>2 条</small></h3>
+        <div class="item"><div class="dot">李</div><div class="body"><div class="t">资料分析速度提不上来，求技巧</div><div class="m">李同学 · 3 小时前</div></div><span class="pill">待回复</span></div>
+        <div class="item"><div class="dot">周</div><div class="body"><div class="t">申论大作文总是跑题怎么办</div><div class="m">周同学 · 5 小时前</div></div><span class="pill">待回复</span></div>
+        <div class="item"><div class="dot">吴</div><div class="body"><div class="t">已回复：面试着装建议</div><div class="m">吴同学 · 昨天</div></div><span class="pill gray">已处理</span></div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
