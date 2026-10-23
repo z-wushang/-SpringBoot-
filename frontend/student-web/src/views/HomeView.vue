@@ -1,18 +1,46 @@
 <script setup lang="ts">
-import { ref, computed } from 'vue'
+import { ref, computed, onMounted } from 'vue'
+import request from '../utils/request'
 
 const user = ref(JSON.parse(localStorage.getItem('user') || '{}'))
 const nickname = computed(() => user.value.nickname || '同学')
 const avatarText = computed(() => (user.value.nickname || 'U').charAt(0).toUpperCase())
+const userId = computed(() => user.value.id || 1)
 
-const todayTasks = [
-  { id: 1, title: '行测言语理解 2 篇 + 精读', duration: 120, done: true },
-  { id: 2, title: '申论概括题 5 道', duration: 60, done: false },
-  { id: 3, title: '资料分析 20 题', duration: 90, done: false }
-]
+interface Task {
+  id: number
+  taskContent: string
+  planDuration: number
+  status: number
+  subject: string
+}
+
+const todayTasks = ref<Task[]>([])
+const streak = ref(7)
+
+const progress = computed(() => {
+  if (!todayTasks.value.length) return 0
+  const done = todayTasks.value.filter(t => t.status === 1).length
+  return Math.round((done / todayTasks.value.length) * 100)
+})
+
+async function loadTasks() {
+  const res: any = await request.get('/task/today', { params: { userId: userId.value } })
+  todayTasks.value = res || []
+}
+
+async function toggleTask(t: Task) {
+  if (t.status === 1) return
+  await request.post(`/task/done/${t.id}`)
+  t.status = 1
+}
+
+async function loadStreak() {
+  const res: any = await request.get('/checkin/streak', { params: { userId: userId.value } })
+  streak.value = res || 0
+}
 
 const weekTrend = [1.5, 2.2, 2.0, 3.2, 2.8, 3.8, 4.0]
-const progress = 66
 
 function buildLine(): string {
   const w = 700
@@ -32,6 +60,11 @@ function buildArea(): string {
   const line = buildLine()
   return `M${line.replaceAll(' ', ' L')} L700,150 L0,150 Z`
 }
+
+onMounted(() => {
+  loadTasks()
+  loadStreak()
+})
 </script>
 
 <template>
@@ -54,7 +87,7 @@ function buildArea(): string {
     <section class="hero">
       <div>
         <h1>砚边磨剑，来日方长。</h1>
-        <p>早上好，{{ nickname }}。今天是你坚持打卡的第 7 天。</p>
+        <p>早上好，{{ nickname }}。今天是你坚持打卡的第 {{ streak }} 天。</p>
       </div>
       <div class="date-pill">2026 年 10 月 23 日 · 周五</div>
     </section>
@@ -71,7 +104,7 @@ function buildArea(): string {
       </div>
 
       <div class="card">
-        <div class="card-label"><span>TODAY · 今日进度</span><span class="pill">2 / 3</span></div>
+        <div class="card-label"><span>TODAY · 今日进度</span><span class="pill">{{ todayTasks.filter(t=>t.status===1).length }} / {{ todayTasks.length }}</span></div>
         <div class="ring-row">
           <svg width="110" height="110" viewBox="0 0 110 110" class="ring">
             <circle cx="55" cy="55" r="44" class="ring-bg"/>
@@ -87,21 +120,22 @@ function buildArea(): string {
 
     <section class="grid-bottom">
       <div class="card">
-        <div class="card-label"><span>TASKS · 今日待办</span><span class="pill">3 项</span></div>
-        <div v-for="t in todayTasks" :key="t.id" class="task" :class="{ done: t.done }">
-          <div class="checkbox" :class="{ done: t.done }">{{ t.done ? '✓' : '' }}</div>
-          <span class="t">{{ t.title }}</span>
-          <span class="sub">{{ t.duration }} min</span>
+        <div class="card-label"><span>TASKS · 今日待办</span><span class="pill">{{ todayTasks.length }} 项</span></div>
+        <div v-if="!todayTasks.length" class="empty">今日还没有任务，去规划页添加吧</div>
+        <div v-for="t in todayTasks" :key="t.id" class="task" :class="{ done: t.status === 1 }" @click="toggleTask(t)">
+          <div class="checkbox" :class="{ done: t.status === 1 }">{{ t.status === 1 ? '✓' : '' }}</div>
+          <span class="t">{{ t.taskContent }}</span>
+          <span class="sub">{{ t.planDuration }} min</span>
         </div>
       </div>
 
       <div class="card">
-        <div class="card-label"><span>STREAK · 连续打卡</span><span class="pill green">🔥 7 天</span></div>
+        <div class="card-label"><span>STREAK · 连续打卡</span><span class="pill green">🔥 {{ streak }} 天</span></div>
         <div class="streak-row">
           <div class="flame">🔥</div>
           <div>
-            <div class="streak-num">7<small> 天连续</small></div>
-            <div class="streak-desc">距离下一个奖章还差 23 天</div>
+            <div class="streak-num">{{ streak }}<small> 天连续</small></div>
+            <div class="streak-desc">保持节奏，继续加油</div>
           </div>
         </div>
       </div>
@@ -161,12 +195,13 @@ function buildArea(): string {
 .ring-num { font-family: var(--font-serif); font-size: 26px; font-weight: 700; }
 .ring-desc { color: var(--text-regular); font-size: 13px; margin-top: 4px; }
 
-.task { display: flex; align-items: center; gap: 12px; padding: 12px 0; border-bottom: 1px dashed var(--border-light); font-size: 14px; }
+.task { display: flex; align-items: center; gap: 12px; padding: 12px 0; border-bottom: 1px dashed var(--border-light); font-size: 14px; cursor: pointer; }
 .task:last-child { border-bottom: none; }
 .checkbox { width: 20px; height: 20px; border: 2px solid var(--border); border-radius: 50%; flex-shrink: 0; background: #fff; display: flex; align-items: center; justify-content: center; color: #FFF8E7; font-size: 12px; }
 .checkbox.done { background: var(--color-primary); border-color: var(--color-primary); }
 .task.done .t { text-decoration: line-through; color: var(--text-secondary); }
 .task .sub { margin-left: auto; color: var(--text-secondary); font-size: 12px; }
+.empty { color: var(--text-secondary); font-size: 13px; padding: 20px 0; text-align: center; }
 
 .streak-row { display: flex; align-items: center; gap: 16px; }
 .flame { width: 56px; height: 56px; border-radius: 18px; background: linear-gradient(135deg, #E8C9A8, var(--color-accent)); display: flex; align-items: center; justify-content: center; font-size: 28px; }
