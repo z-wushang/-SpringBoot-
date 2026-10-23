@@ -1,8 +1,14 @@
 <script setup lang="ts">
+import { ref, computed } from 'vue'
+
+const user = ref(JSON.parse(localStorage.getItem('user') || '{}'))
+const nickname = computed(() => user.value.nickname || '同学')
+const avatarText = computed(() => (user.value.nickname || 'U').charAt(0).toUpperCase())
+
 const todayTasks = [
-  { id: 1, title: '英语阅读 2 篇 + 精读', duration: 120, done: true },
-  { id: 2, title: '政治选择题 50 道', duration: 60, done: false },
-  { id: 3, title: '高数第三章刷题', duration: 90, done: false }
+  { id: 1, title: '行测言语理解 2 篇 + 精读', duration: 120, done: true },
+  { id: 2, title: '申论概括题 5 道', duration: 60, done: false },
+  { id: 3, title: '资料分析 20 题', duration: 90, done: false }
 ]
 
 const weekTrend = [1.5, 2.2, 2.0, 3.2, 2.8, 3.8, 4.0]
@@ -42,13 +48,13 @@ function buildArea(): string {
         <span>数据</span>
         <span>社区</span>
       </nav>
-      <div class="avatar">郑</div>
+      <div class="avatar">{{ avatarText }}</div>
     </header>
 
     <section class="hero">
       <div>
         <h1>砚边磨剑，来日方长。</h1>
-        <p>早上好，欣宇。今天是你坚持打卡的第 7 天。</p>
+        <p>早上好，{{ nickname }}。今天是你坚持打卡的第 7 天。</p>
       </div>
       <div class="date-pill">2026 年 10 月 23 日 · 周五</div>
     </section>
