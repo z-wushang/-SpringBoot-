@@ -20,15 +20,26 @@ request.interceptors.response.use(
     if (res.code === 200) {
       return res.data
     }
-    if (res.code === 401) {
+    if (res.code === 401 || res.code === 403) {
       localStorage.removeItem('token')
-      window.location.href = '/login'
+      localStorage.removeItem('user')
+      if (window.location.pathname !== '/login') {
+        window.location.href = '/login'
+      }
       return Promise.reject(new Error(res.message || '未登录'))
     }
     ElMessage.error(res.message || '请求失败')
     return Promise.reject(new Error(res.message || '请求失败'))
   },
   (error) => {
+    if (error.response?.status === 401 || error.response?.status === 403) {
+      localStorage.removeItem('token')
+      localStorage.removeItem('user')
+      if (window.location.pathname !== '/login') {
+        window.location.href = '/login'
+      }
+      return Promise.reject(error)
+    }
     ElMessage.error('网络异常，请检查连接')
     return Promise.reject(error)
   }

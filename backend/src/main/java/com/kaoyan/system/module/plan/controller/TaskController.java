@@ -7,6 +7,7 @@ import com.kaoyan.system.module.plan.mapper.PlanTaskMapper;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
@@ -38,6 +39,17 @@ public class TaskController {
             t.setStatus(1);
             taskMapper.updateById(t);
         }
+        return Result.success();
+    }
+
+    @PostMapping("/add")
+    public Result<Void> add(@RequestBody PlanTask task) {
+        task.setPlanDate(LocalDate.now());
+        task.setStatus(0);
+        task.setPriority(2);
+        task.setDeleted(0);
+        task.setCreateTime(LocalDateTime.now());
+        taskMapper.insert(task);
         return Result.success();
     }
 }

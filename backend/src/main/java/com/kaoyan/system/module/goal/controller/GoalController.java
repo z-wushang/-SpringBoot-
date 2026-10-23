@@ -4,12 +4,10 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.kaoyan.system.common.result.Result;
 import com.kaoyan.system.module.goal.entity.Goal;
 import com.kaoyan.system.module.goal.mapper.GoalMapper;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.HashMap;
 import java.util.Map;
@@ -44,5 +42,14 @@ public class GoalController {
             result.put("daysLeft", null);
         }
         return Result.success(result);
+    }
+
+    @PostMapping("/add")
+    public Result<Void> add(@RequestBody Goal goal) {
+        goal.setStatus(1);
+        goal.setDeleted(0);
+        goal.setCreateTime(LocalDateTime.now());
+        goalMapper.insert(goal);
+        return Result.success();
     }
 }
