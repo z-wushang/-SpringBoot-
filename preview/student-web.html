@@ -10,7 +10,7 @@
     --card:#FFFDF6;
     --ink:#4A3826; --ink-2:#7A6647; --ink-3:#A89272;
     --line:#EADFC2;
-    --green:#4E6E94; --green-deep:#3A5578;
+    --green:#557A9A; --green-deep:#3D5C7A;
     --orange:#C97B4A; --orange-deep:#A85E32;
     --mono:"Inter",sans-serif;
     --serif:"Noto Serif SC","Songti SC",serif;
@@ -21,7 +21,7 @@
     color:var(--ink);
     background:
       radial-gradient(900px 500px at 85% -10%, rgba(201,123,74,.18), transparent 60%),
-      radial-gradient(700px 400px at -10% 20%, rgba(78,110,148,.12), transparent 60%),
+      radial-gradient(700px 400px at -10% 20%, rgba(85,122,154,.12), transparent 60%),
       linear-gradient(180deg, var(--bg-1), var(--bg-2));
     min-height:100vh;
   }
@@ -30,7 +30,7 @@
     backdrop-filter: blur(8px);
   }
   .logo{display:flex;align-items:center;gap:10px;font-family:var(--serif);font-weight:700;font-size:19px;}
-  .logo-mark{width:36px;height:36px;border-radius:50%;background:var(--green);color:#FFF8E7;display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-weight:700;box-shadow:0 4px 12px rgba(78,110,148,.25);}
+  .logo-mark{width:36px;height:36px;border-radius:50%;background:var(--green);color:#FFF8E7;display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-weight:700;box-shadow:0 4px 12px rgba(85,122,154,.25);}
   .menu{display:flex;gap:36px;margin-left:60px;font-size:14px;color:var(--ink-2);}
   .menu .active{color:var(--ink);font-weight:600;position:relative;}
   .menu .active::after{content:"";position:absolute;left:50%;transform:translateX(-50%);bottom:-8px;width:20px;height:2px;border-radius:2px;background:var(--orange-deep);}
@@ -50,7 +50,7 @@
   .card::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--green),var(--orange));opacity:.0;}
   .card-label{font-size:12px;letter-spacing:2px;color:var(--ink-3);text-transform:uppercase;margin-bottom:14px;display:flex;justify-content:space-between;align-items:center;}
   .pill{padding:4px 12px;border-radius:20px;font-size:12px;background:#F3E8C8;color:var(--ink-2);}
-  .pill.green{background:#E0E7F0;color:var(--green-deep);}
+  .pill.green{background:#DCE4EC;color:var(--green-deep);}
   .countdown-num{font-family:var(--serif);font-size:88px;font-weight:900;line-height:1;color:var(--ink);}
   .countdown-num em{font-style:normal;font-size:22px;color:var(--ink-2);margin-left:10px;font-family:"Inter",sans-serif;font-weight:400;}
   .progress-ring{display:flex;align-items:center;gap:24px;}
@@ -78,7 +78,7 @@
 </head>
 <body>
   <div class="nav">
-    <div class="logo"><div class="logo-mark">砚</div>考研打卡</div>
+    <div class="logo"><div class="logo-mark">公</div>考公打卡</div>
     <div class="menu">
       <div class="active">首页</div><div>规划</div><div>打卡</div><div>数据</div><div>社区</div>
     </div>
@@ -142,12 +142,12 @@
         <svg class="chart" viewBox="0 0 700 150" preserveAspectRatio="none">
           <defs>
             <linearGradient id="g1" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0" stop-color="#4E6E94" stop-opacity=".22"/>
-              <stop offset="1" stop-color="#4E6E94" stop-opacity="0"/>
+              <stop offset="0" stop-color="#557A9A" stop-opacity=".22"/>
+              <stop offset="1" stop-color="#557A9A" stop-opacity="0"/>
             </linearGradient>
           </defs>
           <path d="M20,110 L100,85 L180,95 L260,55 L340,65 L420,35 L500,25 L500,150 L20,150 Z" fill="url(#g1)"/>
-          <polyline fill="none" stroke="#4E6E94" stroke-width="2.5" points="20,110 100,85 180,95 260,55 340,65 420,35 500,25"/>
+          <polyline fill="none" stroke="#557A9A" stroke-width="2.5" points="20,110 100,85 180,95 260,55 340,65 420,35 500,25"/>
           <g fill="#C97B4A"><circle cx="260" cy="55" r="5"/><circle cx="420" cy="35" r="5"/></g>
           <g fill="#A89272" font-size="11" text-anchor="middle" font-family="Inter">
             <text x="20" y="140">一</text><text x="100" y="140">二</text><text x="180" y="140">三</text>

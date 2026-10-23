@@ -4,12 +4,13 @@
 
 | 项目名称 | 基于 SpringBoot 的考研考公规划与打卡系统 |
 | --- | --- |
-| 文档版本 | V1.1 |
+| 文档版本 | V1.2 |
 | 编写日期 | 2026-10-23 |
 | 编写人 | 郑欣宇 |
 | 适用端 | 考生端 Web / 考生端 H5 / 督学端 Web / 管理后台 Web |
 
-> V1.1 修订：配色方案由"松柏绿主色"调整为最终落地的"奶油米黄 + 雾蓝 #4E6E94 + 赭石橙 #C97B4A"书卷气方案，新增衬线字体族。
+> V1.1：配色由"松柏绿主色"调整为"奶油米黄 + 雾蓝 + 赭石橙"书卷气方案，新增衬线字体族。
+> V1.2：主色最终定为**浅藏青 `#557A9A`**，品牌名"考公打卡"，奶油米黄 + 赭石橙打卡按钮，设计稿见 `preview/` 目录。
 
 ---
 
@@ -52,14 +53,14 @@
 
 | Token | 色值 | 用途 |
 | --- | --- | --- |
-| `--color-primary` | `#4E6E94` | 雾蓝：主按钮、选中态、导航高亮、Logo、图表主色 |
-| `--color-primary-hover` | `#5F7FA6` | 主按钮 hover |
-| `--color-primary-active` | `#3A5578` | 主按钮按下 / 深强调 |
-| `--color-primary-light` | `#E0E7F0` | 浅底背景、标签底色 |
+| `--color-primary` | `#557A9A` | 浅藏青：主按钮、选中态、导航高亮、Logo、图表主色 |
+| `--color-primary-hover` | `#6B8FB0` | 主按钮 hover |
+| `--color-primary-active` | `#3D5C7A` | 主按钮按下 / 深强调 |
+| `--color-primary-light` | `#DCE4EC` | 浅底背景、标签底色 |
 | `--color-accent` | `#C97B4A` | 赭石橙：打卡按钮、连续天数、倒计时强调、热力图高值 |
 | `--color-accent-deep` | `#A85E32` | 行动按钮渐变深端、连续天数数字 |
 | `--color-accent-light` | `#F0E2D2` | 激励类标签底 |
-| `--color-success` | `#4E6E94` | 打卡成功（复用主色，避免颜色过多） |
+| `--color-success` | `#557A9A` | 打卡成功（复用主色，避免颜色过多） |
 | `--color-warning` | `#C99B4A` | 临近考试提醒、待办过期 |
 | `--color-danger` | `#B5533C` | 错误、禁用确认、断卡警告 |
 | `--color-info` | `#A89272` | 辅助信息 |
@@ -85,18 +86,18 @@
 
 | 端 | 主题强调色 | 视觉气质 |
 | --- | --- | --- |
-| 考生端 Web/H5 | `#4E6E94` 雾蓝 + `#C97B4A` 赭石橙按钮 | 沉静、书卷气 |
+| 考生端 Web/H5 | `#557A9A` 浅藏青 + `#C97B4A` 赭石橙按钮 | 沉静、书卷气 |
 | 督学端 | `#C97B4A` 赭石橙（顶栏/选中态） | 关怀、行动 |
-| 管理后台 | `#3A5578` 深雾蓝（侧边栏） | 专业、克制 |
+| 管理后台 | `#3D5C7A` 深藏青（侧边栏） | 专业、克制 |
 
 ### 3.5 CSS 变量示例（:root）
 
 ```css
 :root {
-  --color-primary: #4E6E94;
-  --color-primary-hover: #5F7FA6;
-  --color-primary-active: #3A5578;
-  --color-primary-light: #E0E7F0;
+  --color-primary: #557A9A;
+  --color-primary-hover: #6B8FB0;
+  --color-primary-active: #3D5C7A;
+  --color-primary-light: #DCE4EC;
   --color-accent: #C97B4A;
   --color-accent-deep: #A85E32;
   --color-accent-light: #F0E2D2;
