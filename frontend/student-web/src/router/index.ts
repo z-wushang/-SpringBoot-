@@ -8,7 +8,9 @@ const router = createRouter({
     { path: '/login', name: 'login', component: () => import('../views/LoginView.vue') },
     { path: '/plan', name: 'plan', component: () => import('../views/PlanView.vue'), meta: { requiresAuth: true } },
     { path: '/checkin', name: 'checkin', component: () => import('../views/CheckinView.vue'), meta: { requiresAuth: true } },
-    { path: '/stats', name: 'stats', component: () => import('../views/StatsView.vue'), meta: { requiresAuth: true } }
+    { path: '/stats', name: 'stats', component: () => import('../views/StatsView.vue'), meta: { requiresAuth: true } },
+    { path: '/mentor', name: 'mentor', component: () => import('../views/MentorView.vue') },
+    { path: '/admin', name: 'admin', component: () => import('../views/AdminView.vue') }
   ]
 })
 
